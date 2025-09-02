@@ -1,0 +1,7 @@
+.panel { padding: 12px; }
+h4 { margin: 6px 0 10px; }
+.muted { color: #6b7280; }
+.controls { display: grid; gap: 10px; }
+.row { display:flex; gap: 8px; flex-wrap: wrap; }
+.angles { display:flex; gap: 12px; font-size: 14px; }
+input[type="number"] { width: 120px; padding: 8px; border: 1px solid #e5e7eb; border-radius: 10px; }

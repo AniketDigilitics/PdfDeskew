@@ -1,0 +1,98 @@
+:root {
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --primary: #0d6efd;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --ok: #10b981;
+  --warn: #f59e0b;
+  --err: #ef4444;
+  --radius: 12px;
+  --shadow: 0 6px 16px rgba(0,0,0,.08);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--text);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
+}
+
+.container {
+  max-width: 1100px; margin: 24px auto; padding: 0 16px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.btn {
+  border: none; outline: none; cursor: pointer; padding: 10px 14px;
+  border-radius: 10px; background: var(--primary); color: #fff; font-weight: 600;
+}
+.btn.secondary { background: #111827; }
+.btn.ghost { background: #fff; color: var(--text); border: 1px solid #e5e7eb; }
+.btn:disabled { opacity: .6; cursor: not-allowed; }
+
+.badge { padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+.badge.ok { background: #ecfdf5; color: var(--ok); }
+.badge.warn { background: #fffbeb; color: var(--warn); }
+.badge.err { background: #fef2f2; color: var(--err); }
+.badge.muted { background: #f3f4f6; color: #6b7280; }
+
+/* skeleton shimmer */
+.skeleton {
+  position: relative; overflow: hidden; background: #e5e7eb; border-radius: 8px;
+}
+.skeleton::after {
+  content: ''; position: absolute; inset: 0;
+  transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,.6), transparent);
+  animation: shimmer 1.2s infinite;
+}
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+/* round + shadow dialog */
+.custom-dialog-container .mat-mdc-dialog-surface {
+  border-radius: 16px !important;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.35) !important;
+}
+
+
+
+/* Center dialog in viewport */
+.custom-dialog-container .mat-mdc-dialog-surface {
+  border-radius: 12px;          /* smooth corners */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25); /* soft shadow */
+  padding: 0;
+}
+
+/* Ensure dialog is centered */
+.mat-mdc-dialog-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Optional: dim background properly */
+.cdk-overlay-backdrop.cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+
+
+.mat-mdc-dialog-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 !important;
+}
+
+.cdk-overlay-pane {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}

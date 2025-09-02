@@ -1,0 +1,36 @@
+<section class="card editor" *ngIf="jobId() as jid">
+  <header class="toolbar">
+    <div class="left">
+      <h3>Edit & Transform</h3>
+      <span class="badge muted">Job: {{ jid }}</span>
+    </div>
+    <div class="right">
+      <a class="btn ghost" *ngIf="downloadUrl()" [href]="downloadUrl()" [attr.download]="'deskewed-' + jid + '.pdf'">Download corrected PDF</a>
+      <button class="btn secondary" (click)="saveEdits()">Save edits</button>
+      <button class="btn" (click)="navReport()">View Report</button>
+    </div>
+  </header>
+  <div class="editor-body">
+    <ng-container *ngIf="loadingPages() || generatingThumbs(); else grid">
+      <div class="skeleton-grid">
+        <app-skeleton *ngFor="let i of [1,2,3,4,5,6]" width="100px" height="140px"></app-skeleton>
+      </div>
+    </ng-container>
+
+    <ng-template #grid>
+      <app-thumbnail-grid
+        [pages]="pageInfos()"
+        [loading]="loadingPages() || generatingThumbs()"
+        (selectPage)="onSelectPage($event)">
+      </app-thumbnail-grid>
+    </ng-template>
+
+    <app-rotation-controls
+      [selectedIndex]="selectedPageIndex()"
+      [page]="selectedPage()"
+      (rotateBy)="onRotate($event)"
+      (setAngle)="onSetAngle($event)"
+      (resetAngle)="onReset()">
+    </app-rotation-controls>
+  </div>
+</section>

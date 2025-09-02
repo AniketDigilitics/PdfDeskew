@@ -1,0 +1,73 @@
+.uploader { 
+  padding: 24px; 
+  margin-bottom: 16px; 
+  border: 1px dashed #e5e7eb; 
+}
+.uploader-inner { 
+  text-align: center; 
+  padding: 24px 8px; 
+}
+.uploader h2 { 
+  margin: 0 0 6px; 
+}
+
+.queue { 
+  padding: 16px; 
+  margin-bottom: 16px; 
+}
+
+.queue .name { 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  white-space: nowrap; 
+  max-width: 40%; 
+  font-weight: 500;
+}
+.queue .status { 
+  font-size: 0.85rem; 
+  text-transform: capitalize; 
+}
+.queue .row .btn { 
+  font-size: 0.8rem; 
+  padding: 4px 8px; 
+  border-radius: 6px; 
+  margin-left: 4px; 
+}
+
+.queue .row {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f5f9;
+  gap: 6px;
+}
+
+.row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1; 
+  min-width: 0;
+}
+
+.row-buttons {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.row-bottom {
+  display: flex;
+  gap: 12px;
+  font-size: 0.85em;
+  color: #555;
+  flex-wrap: wrap;
+}

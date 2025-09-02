@@ -1,0 +1,46 @@
+<section class="card uploader"
+         (dragover)="onDragOver($event)"
+         (drop)="onDrop($event)">
+  <div class="uploader-inner">
+    <h2>Upload PDFs</h2>
+    <p>Drag & drop files here, or browse</p>
+    <label class="btn">
+      Browse files
+      <input type="file" accept="application/pdf" (change)="onFileSelected($event)" hidden multiple>
+    </label>
+  </div>
+</section>
+
+<section class="card queue" *ngIf="files().length">
+  <h3>Uploads</h3>
+  <div class="row" *ngFor="let f of files()">
+    <div class="row-top">
+      <div class="file-info">
+        <span class="name">{{ f.filename }}</span>
+        <span class="status badge"
+              [class.muted]="f.status==='queued'"
+              [class.warn]="f.status==='analyzing'"
+              [class.ok]="f.status==='ready'"
+              [class.err]="f.status==='failed'">{{ f.status }}</span>
+      </div>
+      <div class="row-buttons">
+        <a class="btn small"
+           *ngIf="f.jobId && f.status==='ready'"
+           [href]="jobs.buildDownloadUrl(f.jobId)"
+           [attr.download]="'deskewed-' + f.filename">
+          Download
+        </a>
+        <button class="btn small" *ngIf="f.jobId && f.status==='ready'" (click)="editJob(f.jobId)">Edit</button>
+        <button class="btn small ghost" *ngIf="f.jobId && f.status==='ready'" (click)="viewReport(f.jobId)">Report</button>
+        <button class="btn small secondary" (click)="deleteJob(f.jobId)">Delete</button>
+      </div>
+    </div>
+    <div class="row-bottom">
+      <span class="pagecount" *ngIf="f.pageCount">Pages: {{ f.pageCount }}</span>
+      <span class="timestamps">
+        <small *ngIf="f.createdAt">Created: {{ f.createdAt | date:'short' }}</small>
+        <small *ngIf="f.updatedAt">Updated: {{ f.updatedAt | date:'short' }}</small>
+      </span>
+    </div>
+  </div>
+</section>

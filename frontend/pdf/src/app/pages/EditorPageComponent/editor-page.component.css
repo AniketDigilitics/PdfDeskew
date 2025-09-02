@@ -1,0 +1,46 @@
+.editor { 
+  padding: 0; 
+}
+.toolbar {
+  padding: 14px 16px; 
+  border-bottom: 1px solid #f1f5f9; 
+  display:flex; 
+  align-items:center; 
+  justify-content:space-between;
+}
+.toolbar .right { 
+  display:flex; 
+  gap: 10px; 
+  flex-wrap: wrap; 
+}
+.editor-body {
+  display: grid; 
+  grid-template-columns: 1fr 300px; 
+  gap: 16px; 
+  padding: 16px;
+}
+
+.queue .name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 50%;
+}
+
+.queue .status.badge {
+  flex-shrink: 0;
+}
+
+.queue .pagecount, .timestamps small {
+  font-size: 0.8em;
+  color: #555;
+  flex-shrink: 0;
+}
+
+
+.skeleton-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}

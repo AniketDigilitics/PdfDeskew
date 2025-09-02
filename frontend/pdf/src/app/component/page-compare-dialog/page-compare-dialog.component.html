@@ -1,0 +1,27 @@
+<header class="dialog-header">
+  <h2>Compare Page {{ page.pageIndex + 1 }}</h2>
+  
+  <button mat-stroked-button color="primary" (click)="close()">Close</button>
+
+</header>
+
+<div class="dialog-body">
+  <div class="preview-grid">
+    <div class="preview-panel">
+      <h4>Original</h4>
+      <img *ngIf="originalUrl; else ph" [src]="originalUrl" />
+    </div>
+    <div class="preview-panel">
+      <h4>Corrected</h4>
+      <img *ngIf="correctedUrl; else ph" [src]="correctedUrl" />
+    </div>
+    <div class="preview-panel">
+      <h4>Updated</h4>
+      <img *ngIf="rotatedUrl; else ph" [src]="rotatedUrl" />
+    </div>
+  </div>
+</div>
+
+<ng-template #ph>
+  <div class="placeholder">Not available</div>
+</ng-template>

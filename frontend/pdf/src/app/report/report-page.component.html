@@ -1,0 +1,30 @@
+<section class="card" style="padding:16px;">
+  <header style="display:flex; align-items:center; justify-content:space-between;">
+    <h3 style="margin:0;">Job Report</h3>
+    <span class="badge muted">Job: {{ jobId() }}</span>
+  </header>
+
+  <div *ngIf="loading()">
+    <app-skeleton height="24px" width="160px"></app-skeleton>
+    <div style="height:8px;"></div>
+    <app-skeleton height="18px" width="60%"></app-skeleton>
+    <div style="height:8px;"></div>
+    <app-skeleton height="18px" width="70%"></app-skeleton>
+    <div style="height:8px;"></div>
+    <app-skeleton height="18px" width="55%"></app-skeleton>
+  </div>
+
+  <ng-container *ngIf="!loading() && data() as d">
+    <p style="margin: 6px 0 14px;">Total pages: <strong>{{ d.totalPages }}</strong></p>
+    <div class="table">
+      <div class="thead">
+        <div>Page</div><div>Detected</div><div>Applied</div>
+      </div>
+      <div class="row" *ngFor="let r of d.rotations">
+        <div>#{{ r.pageIndex + 1 }}</div>
+        <div>{{ r.original | number:'1.2-2' }}°</div>
+        <div>{{ (r.applied ?? r.original) | number:'1.2-2' }}°</div>
+      </div>
+    </div>
+  </ng-container>
+</section>
